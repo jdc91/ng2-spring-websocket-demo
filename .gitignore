@@ -18,4 +18,4 @@ target
 .DS_Store
 target
 /.apt_generated/
-
+/static/*
