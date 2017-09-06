@@ -19,3 +19,5 @@ target
 target
 /.apt_generated/
 /static/*
+.js
+.map

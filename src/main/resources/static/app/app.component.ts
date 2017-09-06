@@ -13,20 +13,20 @@ export class AppComponent {
   counter: string = 'not known';
   ws: $Websocket;
   constructor() {
-    this.ws = new $WebSocket("ws://localhost:8088/counter");
+    this.ws = new $WebSocket("ws://localhost:7777/counter");
   }
 
-  subscribe($event) {
+  subscribe($event : any) {
     console.log("trying to subscribe to ws");
-    this.ws = new $WebSocket("ws://localhost:8088/counter");
+    this.ws = new $WebSocket("ws://localhost:7777/counter");
     this.ws.send("Hello");
     this.ws.getDataStream().subscribe(
-      res => {
+        (res :any) => {
         var count = JSON.parse(res.data).value;
         console.log('Got: ' + count);
         this.counter = count;
       },
-      function(e) { console.log('Error: ' + e.message); },
+      function(e : any) { console.log('Error: ' + e.message); },
       function() { console.log('Completed'); }
     );
   }
