@@ -11,18 +11,18 @@ import {$WebSocket} from './angular2-websocket';
 export class AppComponent {
 
   counter: string = 'not known';
-  ws: $Websocket;
+  ws: any;
   constructor() {
     this.ws = new $WebSocket("ws://localhost:7777/counter");
   }
 
   subscribe($event : any) {
     console.log("trying to subscribe to ws");
-    this.ws = new $WebSocket("ws://localhost:7777/counter");
+    this.ws = new $WebSocket("wss://localhost:7777/counter");
     this.ws.send("Hello");
     this.ws.getDataStream().subscribe(
         (res :any) => {
-        var count = JSON.parse(res.data).value;
+        let count = JSON.parse(res.data).value;
         console.log('Got: ' + count);
         this.counter = count;
       },
